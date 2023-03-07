@@ -12,7 +12,7 @@ Leveraging Workspace ONE Intelligence API to automate the process of getting the
 
 ## Requirements
 
-1. Generate Workspace ONE Intelligence Service Account
+1. Generate Workspace ONE Intelligence Service Account (getting client ID and client sercret)
 2. Create a report and share it with the Service Account
 3. Obtain the report ID
 
@@ -23,7 +23,7 @@ Execute the script using the following parameters:
 - Region - Workspace ONE Intelligence API region. More information here:  https://docs.vmware.com/en/VMware-Workspace-ONE/services/intelligence-documentation/GUID-04_intel_reqs.html 
 - ReportId - Existing Workspace ONE Intelligence report ID 
 - ClientId - Client ID of the service account 
-- ClientSecret Client Secret of the service account 
+- ClientSecret - Client Secret of the service account 
 - OutFile - Targeted output file path & file name 
 
 Example (Python): python3 IntelligenceReportDownload.py -Region "sandbox" -ReportId "XXX" -ClientId "XXX" -ClientSecret "XXX" -OutFile "device_report.csv"
