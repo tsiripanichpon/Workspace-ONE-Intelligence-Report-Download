@@ -1,7 +1,9 @@
 ## Overview
 
 Author: Targoon Siripanichpong
+
 Email: tsiripanichpon@vmware.com
+
 Date Created: 3/7/2023
 
 ## Purpose
@@ -25,6 +27,7 @@ Execute the script using the following parameters:
 - OutFile - Targeted output file path & file name 
 
 Example (Python): python3 IntelligenceReportDownload.py -Region "sandbox" -ReportId "XXX" -ClientId "XXX" -ClientSecret "XXX" -OutFile "device_report.csv"
+
 Example (Powershell): .\Intelligence_report_download_ps.ps1 -Region "sandbox" -ReportId "XXX" -ClientId "XXX" -ClientSecret "XXX" -OutFile "device_$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
 ## Change Log
