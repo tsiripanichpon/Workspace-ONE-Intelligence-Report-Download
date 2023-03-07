@@ -6,6 +6,8 @@ Email: tsiripanichpon@vmware.com
 
 Date Created: 3/7/2023
 
+Platform: Python, Powershell
+
 ## Purpose
 
 Leveraging Workspace ONE Intelligence API to automate the process of getting the latest data from Workspace ONE Intelligence, downloading, and saving the report as CSV.
