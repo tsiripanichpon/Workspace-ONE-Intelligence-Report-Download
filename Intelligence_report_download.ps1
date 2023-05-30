@@ -13,6 +13,8 @@ param (
     [string]$OutFile
 )
 
+
+# Obtain a bearer token from Workspace ONE Intelligence Auth service using client ID and client secret. 
 function Get-AccessToken($url, $client_id, $client_secret) {
     try {
         $response = Invoke-RestMethod -Uri $url -Method Post -Body @{grant_type="client_credentials"; client_id=$client_id; client_secret=$client_secret} -ErrorAction Stop
@@ -23,6 +25,8 @@ function Get-AccessToken($url, $client_id, $client_secret) {
     }
 }
 
+# Taking the bearer access token, generate a new report entry for a specified report based on a report ID. A specific report ID can be found in the URL of Workspace ONE Intelligence report. The report ID follows the UUID format (xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx)
+# 30 seconds delayed are added. For larger report, update this value to allow for additional time for report generation.
 function Run-Report($report_id, $url, $access_token) {
     try {
         $url_run = $url + $report_id + "/run"
@@ -38,6 +42,8 @@ function Run-Report($report_id, $url, $access_token) {
     }
 }
 
+# Taking the bearer access token, get the list of all available report data from based on a report ID. A specific report ID can be found in the URL of Workspace ONE Intelligence report. The report ID follows the UUID format (xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx)
+# The output is a report list, in JSON format, and contains the list scheduled IDs which are different report versions based on when the reports were run/generated. The scheduled ID will also follow the UUID format.
 function Get-Report-List($report_id, $url, $access_token) {
     try {
         $url_report_list = $url + $report_id + "/downloads/search"
@@ -57,6 +63,7 @@ function Get-Report-List($report_id, $url, $access_token) {
     }
 }
 
+# Taking the bearer access token, download report data based on scheduled ID. The output is in JSON format.
 function Download-Report($scheduled_id, $url, $access_token) {
     try {
         $url_download = $url + 'tracking/' + $scheduled_id + "/download"
@@ -73,6 +80,7 @@ function Download-Report($scheduled_id, $url, $access_token) {
     }
 }
 
+# Taking the JSON result, convert to CSV and save it based on the input file name.
 function Save-Report($out_file_name, $downloaded_report) {
     try {
         $downloaded_report | ConvertFrom-Csv | Export-Csv -Path $out_file_name -NoTypeInformation
