@@ -91,7 +91,7 @@ def save_report(out_file_name, downloaded_report):
 
 # Main function to call other functions to generate a bearer token, run a report, get the latest available report, download the report, and save it as a CSV.        
 def main(region, report_id, client_id, client_secret, out_file):
-    base_api_url = "https://api." + region + ".data.vmwservices.com/v1/reports/"
+    base_api_url = "https://api." + region + ".data.vmwservices.com/v2/reports/"
     base_auth_url = "https://auth." + region + ".data.vmwservices.com/oauth/token"
     access_token = get_access_token(base_auth_url, client_id, client_secret) # generate access token
     run_report(report_id, base_api_url, access_token) # run report
