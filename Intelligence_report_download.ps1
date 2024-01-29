@@ -92,7 +92,7 @@ function Save-Report($out_file_name, $downloaded_report) {
 
 # Main function to call other functions to generate a bearer token, run a report, get the latest available report, download the report, and save it as a CSV.    
 function Main() {
-    $BaseApiUrl = "https://api." + $Region + ".data.vmwservices.com/v1/reports/"
+    $BaseApiUrl = "https://api." + $Region + ".data.vmwservices.com/v2/reports/"
     $BaseAuthUrl = "https://auth." + $Region + ".data.vmwservices.com/oauth/token"
     $access_token = Get-AccessToken $BaseAuthUrl $ClientId $ClientSecret # generate access token
     Run-Report $ReportId $BaseApiUrl $access_token # run report
